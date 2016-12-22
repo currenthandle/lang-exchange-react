@@ -24,7 +24,9 @@ app.get('/user', (req, res) => {
     })
 })
 app.post('/user', (req, res) => {
-    db.users.insert(req.body, (err) => console.error(err))
+    db.users.insert(req.body, (err) => {
+        if(err) console.error('error',err)
+    })
 })
 
 
