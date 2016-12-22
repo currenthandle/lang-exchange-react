@@ -45,7 +45,7 @@ class SignUp extends React.Component {
                     <input id='username' type='text'/>
 
                     <label htmlFor='password'>Password:</label>
-                    <input id='password' type='text'/>
+                    <input id='password' type='password'/>
 
                     <label htmlFor='native-lang'>Native Language:</label>
                     <select id='native-lang'>
@@ -63,12 +63,12 @@ class SignUp extends React.Component {
 
                     <label htmlFor='skill-level'>Skill Level:</label>
                     <select id='skill-level'>
-                        <option value='0'>Nothing - 0</option>
-                        <option value='1'>Toddler - 1</option>
-                        <option value='2'>Beginner Conversationalist - 2</option>
-                        <option value='3'>Intermediate Conversationalist - 3</option>
-                        <option value='4'>Advanced Conversationalist - 4</option>
-                        <option value='5'>Fluent - 5</option>
+                        <option value='0'>0 - Nothing</option>
+                        <option value='1'>1 - Toddler</option>
+                        <option value='2'>2 - Beginner</option>
+                        <option value='3'>3 - Intermediate</option>
+                        <option value='4'>4 - Advanced</option>
+                        <option value='5'>5 - Fluent</option>
                     </select>
 
                     <button>Submit</button>

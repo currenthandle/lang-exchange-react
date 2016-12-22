@@ -6,11 +6,9 @@ class Users extends React.Component {
         this.state = { users: [] }
         const xhr = new XMLHttpRequest()
         xhr.onreadystatechange = () => {
-            console.log('state change')
             if (xhr.readyState === 4  && xhr.status === 200 ) {
                 this.state.users = xhr.responseText
                 this.setState({ users: JSON.parse(xhr.responseText) })
-                //this.state = { users: JSON.parse(xhr.responseText) }
             }
         }
         xhr.open('get', '/user', true)
@@ -18,7 +16,15 @@ class Users extends React.Component {
     }
     render() {
         const users = this.state.users.map((user, index) => {
-            return <div key={index}>{user.name} wants to learn {user.lang}</div>
+            return (
+                <div key={index}>
+                   <span>{user.username}</span>  
+                   <span>{user.nativeLang}</span>  
+                   <span>{user.learning}</span>  
+                   <span>{user.skillLevel}</span>  
+                    
+                </div>
+            )
         })
         return (
             <div>
@@ -27,5 +33,4 @@ class Users extends React.Component {
         )
     }
 }
-
 export default Users
