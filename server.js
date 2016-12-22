@@ -15,16 +15,19 @@ app.use(webpackDevMiddleware(webpack(webpackConfig)))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.get('/user', (req, res) => {
-    db.users.find({}, (err, users) => {
-        if (err) throw err
-        res.send(users)
+app.route('/user')
+    .get((req, res) => {
+        db.users.find({}, (err, users) => {
+            if (err) throw err
+            res.send(users)
+        })
     })
-})
-app.post('/user', (req, res) => {
-    db.users.insert(req.body, (err) => {
-        if(err) console.error('error',err)
+    .post((req, res) => {
+        db.users.insert(req.body, (err) => {
+            if(err) console.error('error',err)
+        })
     })
-})
+
+
 
 server.listen(3000) 
