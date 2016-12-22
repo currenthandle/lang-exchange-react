@@ -7,15 +7,10 @@ class App extends React.Component {
     constructor (props) {
         super(props)
         this.state = { messages: [] }
-        console.log('constructor: this.state', this.state)
     }
     componentDidMount() {
-        console.log('component did mount')
         this.socket = io('/')
-        console.log('this.socket', this.socket)
         this.socket.on('message', message => {
-            console.log('on message', message)
-            console.log('componentDidMount: this.state', this.state)
             this.setState({ messages: [message, ...this.state.messages] })
         })
     }
