@@ -32,10 +32,17 @@ class SignUp extends React.Component {
             skillLevel
         }
 
+        fetch('/user', {
+            method: 'post',
+            body: new FormData(e.target)
+        })
+
+        /*
         const xhr = new XMLHttpRequest()
         xhr.open('post', '/user', true)
         xhr.setRequestHeader('Content-Type', 'application/json')
         xhr.send(JSON.stringify(payload))
+        */
     }
     render() {
         return (
