@@ -32,6 +32,8 @@ class SignUp extends React.Component {
             skillLevel
         }
 
+        console.log('e.target', e.target)
+        console.log('new FormData', new FormData(e.target))
         fetch('/user', {
             method: 'post',
             body: new FormData(e.target)
