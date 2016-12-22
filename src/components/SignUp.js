@@ -31,20 +31,15 @@ class SignUp extends React.Component {
             learning,
             skillLevel
         }
-
-        console.log('e.target', e.target)
-        console.log('new FormData', new FormData(e.target))
+        console.log('payload', payload)
         fetch('/user', {
             method: 'post',
-            body: new FormData(e.target)
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            //body: new FormData(e.target)
+            body: JSON.stringify(payload)
         })
-
-        /*
-        const xhr = new XMLHttpRequest()
-        xhr.open('post', '/user', true)
-        xhr.setRequestHeader('Content-Type', 'application/json')
-        xhr.send(JSON.stringify(payload))
-        */
     }
     render() {
         return (
