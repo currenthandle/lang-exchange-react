@@ -43,24 +43,24 @@ class SignUp extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='username'>Username:</label>
                     <input id='username' type='text'/>
-
+                    <br/>
                     <label htmlFor='password'>Password:</label>
                     <input id='password' type='password'/>
-
+                    <br/>
                     <label htmlFor='native-lang'>Native Language:</label>
                     <select id='native-lang'>
                         <option>English</option>
                         <option>Spanish</option>
                         <option>French</option>
                     </select>
-
+                    <br/>
                     <label htmlFor='learning'>Learning:</label>
                     <select id='learning'>
                         <option value='english'>English</option>
                         <option value='spanish'>Spanish</option>
                         <option value='french'>French</option>
                     </select>
-
+                    <br/>
                     <label htmlFor='skill-level'>Skill Level:</label>
                     <select id='skill-level'>
                         <option value='0'>0 - Nothing</option>
@@ -70,7 +70,7 @@ class SignUp extends React.Component {
                         <option value='4'>4 - Advanced</option>
                         <option value='5'>5 - Fluent</option>
                     </select>
-
+                    <br/>
                     <button>Submit</button>
                 </form>
             </div>
