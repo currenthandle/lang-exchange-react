@@ -31,7 +31,13 @@ class SignUp extends React.Component {
             learning,
             skillLevel
         }
-        console.log('payload', payload)
+        //check username is avaliable
+        fetch(`/user/${username}`)
+            .then(resp => resp.text())
+            .then(answer => console.log(answer))
+            .catch(err => console.error(err))
+
+
         fetch('/user', {
             method: 'post',
             headers: new Headers({

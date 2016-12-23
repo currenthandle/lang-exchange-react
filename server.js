@@ -28,6 +28,16 @@ app.route('/user')
         })
     })
 
-
+app.route('user/:username')
+    .get((req, res) => {
+        console.log(req.params.username)
+        db.findOne({ 
+            username: req.params.username 
+        }, (err, user) => {
+            if (err) throw err
+            else if(!user) res.send(true)
+            else res.send(false)
+        })
+    })
 
 server.listen(3000) 
