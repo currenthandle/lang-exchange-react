@@ -3,7 +3,10 @@ import React from 'react'
 class SignUp extends React.Component {
     constructor (props) {
         super(props)
-        this.state = { users: [] }
+        this.state = { 
+            users: [],
+            flash: ''
+        }
     }
     handleSubmit = e => {
         e.preventDefault()
@@ -33,23 +36,30 @@ class SignUp extends React.Component {
         }
         //check username is avaliable
         fetch(`/user/${username}`)
-            .then(resp => resp.text())
-            .then(answer => console.log(answer))
+            .then(resp => resp.json())
+            .then(available => {
+                if(available) {
+                    fetch('/user', {
+                        method: 'post',
+                        headers: new Headers({
+                            'Content-Type': 'application/json'
+                        }),
+                        //body: new FormData(e.target)
+                        body: JSON.stringify(payload)
+                    })
+                }
+                else {
+                    this.setState({ 
+                        flash: 'That Username is already registered. Try another'
+                    })
+                }
+            })
             .catch(err => console.error(err))
-
-
-        fetch('/user', {
-            method: 'post',
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
-            //body: new FormData(e.target)
-            body: JSON.stringify(payload)
-        })
     }
     render() {
         return (
             <div>
+                <div id='flash'>{this.state.flash}</div>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='username'>Username:</label>
                     <input id='username' type='text'/>
