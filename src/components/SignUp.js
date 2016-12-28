@@ -1,6 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-class SignUp extends React.Component {
+import { setSignupFlash } from '../signupActions'
+
+@connect((store) => {
+    return {
+        flash: store.signup.signupFlash
+    }
+})
+export default class SignUp extends React.Component {
     constructor (props) {
         super(props)
         this.state = { 
@@ -49,9 +57,12 @@ class SignUp extends React.Component {
                     })
                 }
                 else {
+                    this.props.dispatch(setSignupFlash())
+                    /*
                     this.setState({ 
                         flash: 'That Username is already registered. Try another'
                     })
+                    */
                 }
             })
             .catch(err => console.error(err))
@@ -59,7 +70,7 @@ class SignUp extends React.Component {
     render() {
         return (
             <div>
-                <div id='flash'>{this.state.flash}</div>
+                <div id='flash'>{this.props.flash}</div>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='username'>Username:</label>
                     <input id='username' type='text'/>
@@ -98,4 +109,3 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp

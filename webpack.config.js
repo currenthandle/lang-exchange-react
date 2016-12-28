@@ -10,8 +10,8 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel',
                 query: {
-                    presets: ['es2015', 'react'],
-                    plugins: ['transform-class-properties']
+                    presets: ['es2015', 'react', 'stage-0'],
+                    plugins: ['transform-class-properties', 'transform-decorators-legacy']
                 }
             }
         ]
