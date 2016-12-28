@@ -2,8 +2,8 @@ export default function reducer(state = {
     signupFlash: ''
 }, action) {
     switch (action.type){
-        case 'USERNAME_TAKEN': 
-            return {...state, signupFlash: 'Username already taken, try another'}
+        case 'SET_SIGNUP_FLASH': 
+            return {...state, signupFlash: action.payload }
         default: 
             return state
     

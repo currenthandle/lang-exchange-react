@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { setSignupFlash } from '../signupActions'
+import { setSignupFlash } from '../actions/signupActions'
 
 @connect((store) => {
     return {
@@ -57,12 +57,7 @@ export default class SignUp extends React.Component {
                     })
                 }
                 else {
-                    this.props.dispatch(setSignupFlash())
-                    /*
-                    this.setState({ 
-                        flash: 'That Username is already registered. Try another'
-                    })
-                    */
+                    this.props.dispatch(setSignupFlash('Username is already taken, please try another'))
                 }
             })
             .catch(err => console.error(err))
