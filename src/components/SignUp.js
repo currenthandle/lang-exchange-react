@@ -3,7 +3,10 @@ import React from 'react'
 class SignUp extends React.Component {
     constructor (props) {
         super(props)
-        this.state = { users: [] }
+        this.state = { 
+            users: [],
+            flash: ''
+        }
     }
     handleSubmit = e => {
         e.preventDefault()
@@ -31,36 +34,53 @@ class SignUp extends React.Component {
             learning,
             skillLevel
         }
-
-        const xhr = new XMLHttpRequest()
-        xhr.open('post', '/user', true)
-        xhr.setRequestHeader('Content-Type', 'application/json')
-        xhr.send(JSON.stringify(payload))
+        //check username is avaliable
+        fetch(`/user/${username}`)
+            .then(resp => resp.json())
+            .then(available => {
+                if(available) {
+                    fetch('/user', {
+                        method: 'post',
+                        headers: new Headers({
+                            'Content-Type': 'application/json'
+                        }),
+                        //body: new FormData(e.target)
+                        body: JSON.stringify(payload)
+                    })
+                }
+                else {
+                    this.setState({ 
+                        flash: 'That Username is already registered. Try another'
+                    })
+                }
+            })
+            .catch(err => console.error(err))
     }
     render() {
         return (
             <div>
+                <div id='flash'>{this.state.flash}</div>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='username'>Username:</label>
                     <input id='username' type='text'/>
-
+                    <br/>
                     <label htmlFor='password'>Password:</label>
                     <input id='password' type='password'/>
-
+                    <br/>
                     <label htmlFor='native-lang'>Native Language:</label>
                     <select id='native-lang'>
                         <option>English</option>
                         <option>Spanish</option>
                         <option>French</option>
                     </select>
-
+                    <br/>
                     <label htmlFor='learning'>Learning:</label>
                     <select id='learning'>
                         <option value='english'>English</option>
                         <option value='spanish'>Spanish</option>
                         <option value='french'>French</option>
                     </select>
-
+                    <br/>
                     <label htmlFor='skill-level'>Skill Level:</label>
                     <select id='skill-level'>
                         <option value='0'>0 - Nothing</option>
@@ -70,7 +90,7 @@ class SignUp extends React.Component {
                         <option value='4'>4 - Advanced</option>
                         <option value='5'>5 - Fluent</option>
                     </select>
-
+                    <br/>
                     <button>Submit</button>
                 </form>
             </div>
