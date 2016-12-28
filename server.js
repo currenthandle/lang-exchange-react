@@ -31,7 +31,7 @@ app.route('/user')
 app.route('/user/:username')
     .get((req, res) => {
         console.log(req.params.username)
-        db.findOne({ 
+        db.users.findOne({ 
             username: req.params.username 
         }, (err, user) => {
             if (err) throw err
