@@ -4,3 +4,10 @@ export function setSignupFlash(flashText) {
         payload: flashText 
     }
 }
+
+export function signUpUser(userInfo) {
+    return {
+        type: 'SIGNUP_USER',
+        payload: userInfo
+    }
+}

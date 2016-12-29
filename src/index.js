@@ -7,10 +7,10 @@ import store from './store'
 
 import App from './components/App'
 
-import Home from './views/home/Component'
-import Signup from './views/signup/Component'
-import Signin from './views/signin/Component'
-import Users from './views/users/Component'
+import Home from './views/home/component'
+import Signup from './views/signup/component'
+import Signin from './views/signin/component'
+import Users from './views/users/component'
 
 render(
     (
