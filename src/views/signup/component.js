@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { setSignupFlash, activateLoginSession } from './actions'
 
-import { setSignupFlash } from './actions'
 
 @connect((store) => {
     return {
@@ -52,6 +52,7 @@ export default class Signup extends React.Component {
     handleSubmit = e => {
         e.preventDefault()
 
+
         const usernameElm = e.target.querySelector('#username')
         const passwordElm = e.target.querySelector('#password')
         const nativeLangElm = e.target.querySelector('#native-lang')
@@ -88,6 +89,7 @@ export default class Signup extends React.Component {
                         //body: new FormData(e.target)
                         body: JSON.stringify(payload)
                     })
+                    this.props.dispatch(activateLoginSession(payload))
                 }
                 else {
                     this.props.dispatch(setSignupFlash('Username is already taken, please try another'))

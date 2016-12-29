@@ -5,9 +5,9 @@ export function setSignupFlash(flashText) {
     }
 }
 
-export function signUpUser(userInfo) {
+export function activateLoginSession(user) {
     return {
-        type: 'SIGNUP_USER',
-        payload: userInfo
+        type: 'ACTIVATE_LOGIN_SESSION',
+        payload: user
     }
 }
