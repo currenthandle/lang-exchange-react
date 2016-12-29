@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { setSignupFlash } from '../actions/signupActions'
+import { setSignupFlash } from './actions'
 
 @connect((store) => {
     return {
         flash: store.signup.signupFlash
     }
 })
-export default class SignUp extends React.Component {
+export default class Signup extends React.Component {
     constructor (props) {
         super(props)
         this.state = { 

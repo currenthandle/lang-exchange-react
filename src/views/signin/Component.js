@@ -1,10 +1,10 @@
 import React from 'react'
 
-class SignIn extends React.Component {
+export default class Signin extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor='username'>Username:</label>
                     <input id='username' type='text' />
                     <br/>
@@ -27,8 +27,4 @@ class SignIn extends React.Component {
             body: JSON.stringify()
         })
     }
-
 }
-
-export default SignIn
-
