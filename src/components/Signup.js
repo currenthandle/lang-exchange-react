@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { setSignupFlash } from '../actions/signupActions'
+import { createSession } from '../actions/user'
 
 @connect((store) => {
     return {
@@ -55,6 +56,7 @@ export default class SignUp extends React.Component {
                         //body: new FormData(e.target)
                         body: JSON.stringify(payload)
                     })
+                    this.props.dispatch(createSession(payload))
                 }
                 else {
                     this.props.dispatch(setSignupFlash('Username is already taken, please try another'))

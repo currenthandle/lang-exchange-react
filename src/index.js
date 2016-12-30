@@ -7,8 +7,8 @@ import store from './store'
 
 import App from './components/App'
 import Home from './components/Home'
-import Signup from './components/SignUp'
-import Signin from './components/SignIn'
+import Signup from './components/Signup'
+import Signin from './components/Signin'
 import Users from './components/Users'
 
 render(
