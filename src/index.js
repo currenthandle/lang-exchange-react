@@ -7,8 +7,8 @@ import store from './store'
 
 import App from './components/App'
 import Home from './components/Home'
-import SignUp from './components/SignUp'
-import SignIn from './components/SignIn'
+import Signup from './components/SignUp'
+import Signin from './components/SignIn'
 import Users from './components/Users'
 
 render(
@@ -17,8 +17,8 @@ render(
             <Router history={hashHistory}>
                 <Route path='/' component={App}>
                     <IndexRoute component={Home} />
-                    <Route path='signup' components={SignUp} />
-                    <Route path='signin' components={SignIn} />
+                    <Route path='signup' components={Signup} />
+                    <Route path='signin' components={Signin} />
                     <Route path='users' components={Users} />
                 </Route>
             </Router>
